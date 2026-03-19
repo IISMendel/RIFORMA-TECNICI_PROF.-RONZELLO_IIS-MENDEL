@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riforma Istituti Tecnici · D.M. 19 febbraio 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:      #1a1810;
+    --ink-mid:  #3d3828;
+    --ink-soft: #6b6250;
+    --cream:    #faf7f2;
+    --warm:     #f4ede0;
+    --gold:     #b8900a;
+    --gold-lt:  #e6c84a;
+    --sage:     #4a6741;
+    --sage-lt:  #7a9e70;
+    --rust:     #8b3a20;
+    --rust-lt:  #c4612e;
+    --sky:      #2a5068;
+    --sky-lt:   #4d86a8;
+    --border:   #ddd5c0;
+    --serif:    'Cormorant Garamond', Georgia, serif;
+    --sans:     'DM Sans', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ── HERO ─────────────────────────────────────────── */
+  .hero {
+    background: var(--ink);
+    color: #f0ebe0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(184,144,10,.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 80% at 10% 80%, rgba(74,103,65,.22) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 40px 72px;
+    position: relative;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--sans);
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold-lt);
+    border: 1px solid rgba(230,200,74,.35);
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 600;
+    line-height: 1.15;
+    max-width: 760px;
+    margin-bottom: 20px;
+    letter-spacing: -.01em;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-lt); }
+  .hero .lead {
+    font-size: 1.05rem;
+    color: #c8bfa8;
+    max-width: 640px;
+    line-height: 1.75;
+    margin-bottom: 44px;
+    font-weight: 300;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .hero-meta-item .label {
+    font-size: .68rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #7a7060;
+    font-weight: 600;
+  }
+  .hero-meta-item .value {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: #e0d8c4;
+  }
+
+  /* ── NAV ──────────────────────────────────────────── */
+  .toc-bar {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  }
+  .toc-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-link {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 14px 16px;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color .2s, border-color .2s;
+  }
+  .toc-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* ── LAYOUT ────────────────────────────────────────── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .section {
+    padding: 72px 0 60px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .art-num {
+    flex-shrink: 0;
+    width: 52px; height: 52px;
+    background: var(--ink);
+    color: #e0d8c4;
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 2px;
+    margin-top: 4px;
+  }
+  .section-title-group {}
+  .art-label {
+    font-size: .68rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .section-intro {
+    font-size: .98rem;
+    color: var(--ink-mid);
+    margin-bottom: 32px;
+    max-width: 720px;
+    line-height: 1.75;
+  }
+
+  /* ── CRITERI CARDS ─────────────────────────────────── */
+  .criteria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
+  }
+  .criterion-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    padding: 22px 24px;
+    border-radius: 2px;
+  }
+  .criterion-card .letter {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .criterion-card h4 {
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: .02em;
+  }
+  .criterion-card p {
+    font-size: .82rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  /* ── INDIRIZZI ─────────────────────────────────────── */
+  .sector-block {
+    margin-bottom: 36px;
+  }
+  .sector-title {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: white;
+    background: var(--ink-mid);
+    padding: 6px 14px;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+  .indirizzo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+  }
+  .ind-card {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    border-radius: 2px;
+    font-size: .83rem;
+  }
+  .ind-card .ind-letter {
+    font-family: var(--serif);
+    font-weight: 700;
+    color: var(--sage);
+    font-size: 1rem;
+    margin-right: 4px;
+  }
+  .ind-card .ind-name { font-weight: 600; color: var(--ink); }
+  .ind-card .ind-subs {
+    margin-top: 6px;
+    padding-left: 12px;
+    border-left: 2px solid var(--border);
+    font-size: .76rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .ind-card.highlight {
+    border-color: var(--sage-lt);
+    border-width: 2px;
+    background: #f3f8f2;
+  }
+  .ind-card.highlight .ind-letter { color: var(--sage); }
+  .highlight-badge {
+    display: inline-block;
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    background: var(--sage);
+    color: white;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* ── TWO-COL ───────────────────────────────────────── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* ── INFO BOXES ────────────────────────────────────── */
+  .info-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--sage);
+    padding: 22px 24px;
+    border-radius: 0 2px 2px 0;
+  }
+  .info-box.rust { border-left-color: var(--rust); }
+  .info-box.sky  { border-left-color: var(--sky);  }
+  .info-box.gold { border-left-color: var(--gold); }
+  .info-box h4 {
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .info-box ul {
+    padding-left: 18px;
+  }
+  .info-box ul li {
+    font-size: .85rem;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    margin-bottom: 4px;
+  }
+  .info-box p { font-size: .88rem; color: var(--ink-mid); line-height: 1.7; }
+
+  /* ── TIMELINE ──────────────────────────────────────── */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px; top: 6px; bottom: 6px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--sage));
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 28px;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -26px; top: 6px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--gold);
+  }
+  .tl-date {
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3px;
+  }
+  .tl-title { font-weight: 600; font-size: .9rem; color: var(--ink); margin-bottom: 4px; }
+  .tl-body  { font-size: .82rem; color: var(--ink-soft); line-height: 1.6; }
+
+  /* ── ALLEGATO SECTION ──────────────────────────────── */
+  .allegato-hero {
+    background: linear-gradient(135deg, var(--sage) 0%, #2e4a28 100%);
+    color: white;
+    padding: 56px 40px;
+    margin-bottom: 40px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .allegato-hero::after {
+    content: 'A·3';
+    position: absolute;
+    right: 40px; top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--serif);
+    font-size: 9rem;
+    font-weight: 700;
+    color: rgba(255,255,255,.07);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .allegato-hero .sub {
+    font-size: .72rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.65);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .allegato-hero h2 {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .allegato-hero p {
+    font-size: .93rem;
+    color: rgba(255,255,255,.8);
+    max-width: 640px;
+    line-height: 1.7;
+  }
+
+  /* ── COMPETENZE ────────────────────────────────────── */
+  .comp-list {
+    counter-reset: comp;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .comp-list li {
+    counter-increment: comp;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: white;
+    border: 1px solid var(--border);
+    padding: 14px 18px;
+    border-radius: 2px;
+    font-size: .84rem;
+    color: var(--ink-mid);
+    line-height: 1.65;
+  }
+  .comp-list li::before {
+    content: counter(comp);
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    background: var(--sage);
+    color: white;
+    font-family: var(--serif);
+    font-size: .9rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    margin-top: 1px;
+  }
+  .comp-list.rust li::before { background: var(--rust); }
+  .comp-list.sky  li::before { background: var(--sky);  }
+  .comp-list.gold li::before { background: var(--gold); }
+
+  /* ── ARTICOLAZIONE TABS ────────────────────────────── */
+  .art-tabs { margin-top: 32px; }
+  .art-tab-buttons {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+  }
+  .art-tab-btn {
+    font-family: var(--sans);
+    font-size: .78rem;
+    font-weight: 600;
+    padding: 10px 18px;
+    border: 1px solid var(--border);
+    border-bottom: none;
+    background: var(--warm);
+    color: var(--ink-soft);
+    cursor: pointer;
+    border-radius: 3px 3px 0 0;
+    transition: background .2s, color .2s;
+  }
+  .art-tab-btn.active {
+    background: white;
+    color: var(--ink);
+    border-color: var(--border);
+  }
+  .art-tab-panel {
+    display: none;
+    background: white;
+    border: 1px solid var(--border);
+    padding: 28px;
+    border-radius: 0 2px 2px 2px;
+  }
+  .art-tab-panel.active { display: block; }
+  .art-tab-panel h4 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+  .art-tab-panel .desc {
+    font-size: .87rem;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    line-height: 1.7;
+    max-width: 680px;
+  }
+
+  /* ── PROFILO GENERALE ──────────────────────────────── */
+  .profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .profile-item {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 16px 18px;
+    border-radius: 2px;
+    font-size: .83rem;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    position: relative;
+    padding-left: 20px;
+  }
+  .profile-item::before {
+    content: '→';
+    position: absolute;
+    left: 8px; top: 18px;
+    color: var(--sage-lt);
+    font-size: .9rem;
+  }
+
+  /* ── CALLOUT ───────────────────────────────────────── */
+  .callout {
+    background: #fdf8ee;
+    border: 1px solid #e6c84a55;
+    border-left: 4px solid var(--gold);
+    padding: 18px 22px;
+    border-radius: 0 3px 3px 0;
+    margin: 24px 0;
+    font-size: .88rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+  .callout strong { color: var(--ink); }
+
+  /* ── FOOTER ────────────────────────────────────────── */
+  .footer {
+    background: var(--ink);
+    color: #7a7060;
+    padding: 40px;
+    text-align: center;
+    font-size: .78rem;
+    line-height: 1.7;
+  }
+  .footer strong { color: #c4b898; }
+
+  /* ── RESPONSIVE ────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .hero-inner   { padding: 52px 24px 44px; }
+    .container    { padding: 0 24px; }
+    .section      { padding: 48px 0 40px; }
+    .allegato-hero { padding: 36px 24px; }
+    .criteria-grid { grid-template-columns: 1fr; }
+    .allegato-hero::after { display: none; }
+  }
+
+  /* ── ANIMATIONS ────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-badge  { animation: fadeUp .5s ease both; }
+  .hero h1     { animation: fadeUp .5s .1s ease both; }
+  .hero .lead  { animation: fadeUp .5s .2s ease both; }
+  .hero-meta   { animation: fadeUp .5s .3s ease both; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span>⚖</span>
+      Ministero dell'Istruzione e del Merito
+    </div>
+    <h1>Riforma degli<br><em>Istituti Tecnici</em></h1>
+    <p class="lead">
+      Decreto di attuazione degli artt. 26 e 26-bis del D.L. 144/2022 — revisione dell'assetto ordinamentale,
+      nuovi indirizzi, quadri orari e risultati di apprendimento.
+      Sintesi per il Collegio Docenti di IIS Gregorio Mendel.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">Decreto</span>
+        <span class="value">D.M. n. 29 · 19 febbraio 2026</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Firmato da</span>
+        <span class="value">Prof. Giuseppe Valditara</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Entrata in vigore</span>
+        <span class="value">Classi prime · a.s. 2026/2027</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Riferimento normativo</span>
+        <span class="value">D.L. 144/2022 · PNRR Missione 4.1</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════ TOC -->
+<nav class="toc-bar">
+  <div class="toc-inner">
+    <a href="#art1"     class="toc-link">Art. 1 — Finalità</a>
+    <a href="#art2"     class="toc-link">Art. 2 — Indirizzi</a>
+    <a href="#art3"     class="toc-link">Art. 3 — Didattica</a>
+    <a href="#art4-5"   class="toc-link">Artt. 4-5 — Raccordi e Docenti</a>
+    <a href="#art6-8"   class="toc-link">Artt. 6-8 — Patti / CPIA / Intern.</a>
+    <a href="#art9"     class="toc-link">Art. 9 — Transizione</a>
+    <a href="#allegato" class="toc-link">Allegato A-3 — Agraria</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════ ART 1 -->
+<section class="section" id="art1">
+  <div class="container">
+    <div class="section-header">
+      <div class="art-num">1</div>
+      <div class="section-title-group">
+        <div class="art-label">Articolo 1</div>
+        <h2 class="section-title">Oggetto e finalità</h2>
+      </div>
+    </div>
+    <p class="section-intro">
+      Il decreto avvia la revisione dell'assetto ordinamentale degli istituti tecnici in attuazione del D.L. 144/2022,
+      con l'obiettivo di <strong>allineare i curricoli alle esigenze del tessuto produttivo</strong>, nell'ottica del PNRR
+      (Riforma 1.1, Missione 4, Componente 1), di Industria 4.0 e della transizione digitale.
+      La revisione si fonda su sei criteri fondamentali:
+    </p>
+    <div class="criteria-grid">
+      <div class="criterion-card">
+        <div class="letter">A</div>
+        <h4>Aggiornamento dei profili</h4>
+        <p>Rafforzamento delle competenze generali (linguistiche, matematiche, scientifiche, giuridiche), potenziamento delle competenze tecnico-professionali e aggiornamento del P.E.Cu.P. Maggiore connessione con il tessuto socio-economico locale, didattica laboratoriale e progettazione interdisciplinare per UdA.</p>
+      </div>
+      <div class="criterion-card">
+        <div class="letter">B</div>
+        <h4>Continuità con l'istruzione terziaria</h4>
+        <p>Definizione di meccanismi per garantire la continuità degli apprendimenti tra istruzione tecnica e percorsi universitari nei settori tecnologici, con raccordi con ITS Academy e lauree professionalizzanti.</p>
+      </div>
+      <div class="criterion-card">
+        <div class="letter">C</div>
+        <h4>Formazione docenti</h4>
+        <p>Attività formative specifiche per il personale docente degli istituti tecnici, orientate alla sperimentazione di modalità didattiche laboratoriali e innovative, coerentemente con i contesti territoriali.</p>
+      </div>
+      <div class="criterion-card">
+        <div class="letter">D</div>
+        <h4>Patti educativi 4.0</h4>
+        <p>Elaborazione di accordi regionali/interregionali (Patti educativi 4.0) per la condivisione di risorse professionali, logistiche e strumentali tra istituti, imprese, ITS Academy, università, centri di ricerca ed Enti di formazione.</p>
+      </div>
+      <div class="criterion-card">
+        <div class="letter">E</div>
+        <h4>CPIA sperimentali</h4>
+        <p>I Centri Provinciali di Istruzione per Adulti (CPIA) potranno erogare, in via sperimentale, percorsi di istruzione tecnica laddove non siano già offerti in rete o non coprono adeguatamente la domanda del territorio.</p>
+      </div>
+      <div class="criterion-card">
+        <div class="letter">F</div>
+        <h4>Internazionalizzazione</h4>
+        <p>Misure di supporto allo sviluppo dei processi di internazionalizzazione degli istituti tecnici, favorendo mobilità, scambi internazionali, certificazioni linguistiche e partecipazione a progetti europei.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ ART 2 -->
+<section class="section" id="art2" style="background: var(--warm);">
+  <div class="container">
+    <div class="section-header">
+      <div class="art-num">2</div>
+      <div class="section-title-group">
+        <div class="art-label">Articolo 2</div>
+        <h2 class="section-title">Indirizzi, articolazioni e quadri orari</h2>
+      </div>
+    </div>
+    <p class="section-intro">
+      Il decreto riorganizza l'offerta formativa in due macro-settori. Gli indirizzi sono specializzati nel triennio conclusivo
+      attraverso articolazioni. I quadri orari sono definiti negli Allegati B e C1–C11.
+      Le scuole possono ulteriormente personalizzare usando le quote di autonomia e flessibilità.
+    </p>
+
+    <div class="sector-block">
+      <div class="sector-title">Settore Economico</div>
+      <div class="indirizzo-grid">
+        <div class="ind-card">
+          <span class="ind-letter">a)</span><span class="ind-name">Amministrazione, finanza e marketing</span>
+          <div class="ind-subs">Indirizzo generale · Relazioni internazionali per il marketing · Sistemi informativi aziendali</div>
+        </div>
+        <div class="ind-card">
+          <span class="ind-letter">b)</span><span class="ind-name">Turismo, beni culturali e ambientali</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sector-block">
+      <div class="sector-title">Settore Tecnologico-Ambientale</div>
+      <div class="indirizzo-grid">
+        <div class="ind-card">
+          <span class="ind-letter">a)</span><span class="ind-name">Meccanica, meccatronica ed energia</span>
+          <div class="ind-subs">Meccanica e meccatronica · Energia</div>
+        </div>
+        <div class="ind-card">
+          <span class="ind-letter">b)</span><span class="ind-name">Trasporti e logistica</span>
+          <div class="ind-subs">9 articolazioni (costruzioni, conduzione mezzi terrestri/aerei/navali, logistica…)</div>
+        </div>
+        <div class="ind-card">
+          <span class="ind-letter">c)</span><span class="ind-name">Elettronica ed elettrotecnica</span>
+          <div class="ind-subs">Elettronica · Elettrotecnica · Automazione</div>
+        </div>
+        <div class="ind-card">
+          <span class="ind-letter">d)</span><span class="ind-name">Informatica e telecomunicazioni</span>
+          <div class="ind-subs">Informatica · Telecomunicazioni</div>
+        </div>
+        <div class="ind-card">
+          <span class="ind-letter">e)</span><span class="ind-name">Grafica e comunicazione</span>
+        </div>
+        <div class="ind-card">
+          <span class="ind-letter">f)</span><span class="ind-name">Chimica, materiali e biotecnologie</span>
+          <div class="ind-subs">Chimica e materiali · Biotecnologie ambientali · Biotecnologie sanitarie</div>
+        </div>
+        <div class="ind-card">
+          <span class="ind-letter">g)</span><span class="ind-name">Sistema moda</span>
+          <div class="ind-subs">Progettazione tessile/moda · Progettazione calzatura</div>
+        </div>
+        <div class="ind-card highlight">
+          <span class="ind-letter">h)</span>
+          <span class="ind-name">Agraria, agroalimentare e agroindustria</span>
+          <span class="highlight-badge">IIS Mendel</span>
+          <div class="ind-subs">
+            h.1 – Produzioni e tecnologie agroalimentari per il Made in Italy<br>
+            h.2 – Scienze agrarie ed ambientali<br>
+            h.3 – Viticoltura ed enologia
+          </div>
+        </div>
+        <div class="ind-card">
+          <span class="ind-letter">i)</span><span class="ind-name">Costruzioni, ambiente e territorio</span>
+          <div class="ind-subs">Indirizzo generale · Geotecnico · Tecnologie del legno nelle costruzioni</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Nota speciale:</strong> Il decreto prevede anche il percorso di specializzazione annuale di <strong>Enotecnico</strong>
+      (Allegato D-1), attivabile dopo il diploma nell'articolazione Viticoltura ed enologia. Il titolo è referenziato al
+      <strong>V livello EQF/QNQ</strong>. Il modello del diploma è nell'Allegato D-2.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ ART 3 -->
+<section class="section" id="art3">
+  <div class="container">
+    <div class="section-header">
+      <div class="art-num">3</div>
+      <div class="section-title-group">
+        <div class="art-label">Articolo 3</div>
+        <h2 class="section-title">Assetto didattico e progettazione del curricolo</h2>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="info-box sage">
+        <h4>Metodologia per competenze</h4>
+        <ul>
+          <li>Progettazione <strong>interdisciplinare e multidisciplinare</strong></li>
+          <li>Organizzazione della didattica per <strong>Unità di Apprendimento (UdA)</strong></li>
+          <li>Le UdA mirano all'acquisizione/mobilitazione di conoscenze e abilità per gestire <em>compiti di realtà</em></li>
+          <li>Partecipazione attiva e autonoma degli studenti</li>
+          <li>Possibilità di interventi personalizzati (individuali o gruppi-classe) con metodologie differenziate</li>
+        </ul>
+      </div>
+      <div class="info-box gold">
+        <h4>Curricolo di istituto</h4>
+        <ul>
+          <li>Elaborato in autonomia con riferimento al <strong>P.E.Cu.P.</strong> (Allegato 2-bis D.L. 144/2022)</li>
+          <li>Riferimento ai profili di indirizzo/articolazione (Allegati A1–A11)</li>
+          <li>Competenze chiave per l'apprendimento permanente</li>
+          <li>Potenziamento discipline <strong>STEM</strong> (D.M. 184/2023)</li>
+          <li>Moduli su <strong>transizione ecologica</strong> e sviluppo sostenibile</li>
+          <li><strong>Educazione civica</strong> trasversale (L. 92/2019 · D.M. 183/2024)</li>
+          <li>Attività di orientamento (D.M. 328/2022)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout" style="margin-top: 24px;">
+      <strong>Compresenze:</strong> I quadri orari (Allegati C1–C11) prevedono compresenze che le scuole possono riorganizzare
+      funzionalmente allo sviluppo, approfondimento e recupero di competenze specifiche, sulla base della programmazione collegiale e del PTOF.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ ART 4-5 -->
+<section class="section" id="art4-5" style="background: var(--warm);">
+  <div class="container">
+    <div class="section-header">
+      <div class="art-num">4·5</div>
+      <div class="section-title-group">
+        <div class="art-label">Articoli 4 e 5</div>
+        <h2 class="section-title">Raccordi con l'istruzione terziaria e formazione docenti</h2>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="info-box sky">
+        <h4>Raccordi con l'istruzione terziaria (Art. 4)</h4>
+        <ul>
+          <li>Le scuole prevedono interventi per facilitare il raccordo con gli <strong>ITS Academy</strong> (L. 99/2022)</li>
+          <li>Collegamento con le <strong>lauree professionalizzanti</strong> (art. 2, L. 163/2021)</li>
+          <li>Logica di continuità degli apprendimenti e progressivo innalzamento delle competenze tecnico-professionali</li>
+          <li>Raccordi programmati in sinergia con le attività di orientamento e con il coinvolgimento dei partner economici e sociali</li>
+        </ul>
+      </div>
+      <div class="info-box rust">
+        <h4>Formazione del personale docente (Art. 5)</h4>
+        <ul>
+          <li>Periodi di <strong>osservazione in azienda</strong> per i docenti delle discipline professionalizzanti e per gli ITP</li>
+          <li>Affiancamento tutoriale per l'aggiornamento sulle innovazioni dei contesti lavorativi</li>
+          <li>Promozione di <strong>azioni formative laboratoriali innovative</strong> legate ai contesti territoriali</li>
+          <li>Tutto senza nuovi oneri a carico del bilancio dello Stato</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ ART 6-8 -->
+<section class="section" id="art6-8">
+  <div class="container">
+    <div class="section-header">
+      <div class="art-num">6–8</div>
+      <div class="section-title-group">
+        <div class="art-label">Articoli 6, 7 e 8</div>
+        <h2 class="section-title">Patti 4.0 · CPIA sperimentali · Internazionalizzazione</h2>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+
+      <div class="info-box sage">
+        <h4>Patti educativi 4.0 (Art. 6)</h4>
+        <p style="margin-bottom: 10px;">Accordi regionali/interregionali che coinvolgono: scuole (singole o in rete), ITS Academy, università, centri di ricerca, Enti di formazione, imprese, mondo delle professioni.</p>
+        <ul>
+          <li>Condivisione di risorse professionali e strumentali</li>
+          <li>Laboratori tecnologicamente avanzati</li>
+          <li>Supporto per percorsi scuola-lavoro</li>
+          <li>Raccordo con mondo del lavoro e professioni</li>
+          <li>Programmazione formazione docenti</li>
+        </ul>
+      </div>
+
+      <div class="info-box gold">
+        <h4>CPIA sperimentali (Art. 7)</h4>
+        <p style="margin-bottom: 10px;">Dall'<strong>a.s. 2027/2028</strong>, i CPIA aderenti alle filiere formative potranno erogare percorsi di secondo livello di istruzione tecnica.</p>
+        <ul>
+          <li>Solo dove i percorsi non siano già attivi in rete o siano insufficienti</li>
+          <li>Previo Avviso nazionale di selezione pubblica</li>
+          <li>Selezione tramite Commissione tecnica territoriale (USR + Regione)</li>
+          <li>Autorizzazione annuale con decreto interministeriale MIM–MEF</li>
+        </ul>
+      </div>
+
+      <div class="info-box sky">
+        <h4>Internazionalizzazione (Art. 8)</h4>
+        <p style="margin-bottom: 10px;">Le scuole tecniche devono/possono:</p>
+        <ul>
+          <li><strong>CLIL obbligatorio</strong>: una DNL in inglese nell'area di indirizzo (classi 3ª, 4ª, 5ª)</li>
+          <li>Prospettiva interculturale in tutte le discipline non linguistiche</li>
+          <li>Scambi internazionali, stage e PCTO all'estero</li>
+          <li>Certificazioni linguistiche extracurricolari</li>
+          <li>Quote di autonomia per lo studio delle lingue</li>
+          <li>Affiancamento con docenti di madrelingua</li>
+          <li>Progetti europei e internazionali</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ ART 9 -->
+<section class="section" id="art9" style="background: var(--warm);">
+  <div class="container">
+    <div class="section-header">
+      <div class="art-num">9</div>
+      <div class="section-title-group">
+        <div class="art-label">Articolo 9</div>
+        <h2 class="section-title">Disposizioni transitorie e finali</h2>
+      </div>
+    </div>
+    <div class="two-col">
+      <div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-date">19 febbraio 2026</div>
+            <div class="tl-title">Firma del decreto</div>
+            <div class="tl-body">D.M. n. 29 firmato dal Ministro Valditara. Parere CSPI acquisito il 5 febbraio 2026. Cessano le disposizioni del D.M. 269/2024.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">A.S. 2026/2027</div>
+            <div class="tl-title">Entrata in vigore per le classi prime</div>
+            <div class="tl-body">Il nuovo assetto ordinamentale si applica a partire dalle classi prime. Le classi già in corso proseguono con il vecchio ordinamento fino al completamento del ciclo.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">A.S. 2027/2028</div>
+            <div class="tl-title">Avvio sperimentazione CPIA</div>
+            <div class="tl-body">Prende avvio la sperimentazione dei percorsi di secondo livello da parte dei CPIA selezionati tramite avviso pubblico.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">Da definire</div>
+            <div class="tl-title">Linee guida ministeriali</div>
+            <div class="tl-body">Con direttiva del Ministro saranno adottate Linee guida per il nuovo assetto didattico e per la declinazione dei risultati di apprendimento in competenze, abilità e conoscenze.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">Da definire</div>
+            <div class="tl-title">Quadri orari CPIA</div>
+            <div class="tl-body">Con successivo decreto saranno definiti i quadri orari dei percorsi di istruzione tecnica di secondo livello nel sistema di istruzione degli adulti (DPR 263/2012).</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="info-box sage" style="margin-bottom: 16px;">
+          <h4>Cosa cambia subito per la scuola</h4>
+          <ul>
+            <li>Il decreto va trasmesso alla <strong>Corte dei Conti</strong> per il controllo di legittimità</li>
+            <li>Pubblicazione in <strong>Gazzetta Ufficiale</strong></li>
+            <li>L'attuazione avviene senza nuovi oneri per la finanza pubblica</li>
+            <li>Regioni a statuto speciale e Province autonome di Trento e Bolzano adattano il decreto alle loro competenze</li>
+            <li>Applicazione anche alle scuole con lingua di insegnamento slovena e bilingue (FVG)</li>
+          </ul>
+        </div>
+        <div class="info-box rust">
+          <h4>Allegati al decreto</h4>
+          <ul>
+            <li><strong>A1–A11</strong>: Profilo del Diplomato e risultati di apprendimento per indirizzo/articolazione</li>
+            <li><strong>B</strong>: Quadro orario dell'area di istruzione generale nazionale</li>
+            <li><strong>C1–C11</strong>: Quadri orari dell'area di indirizzo flessibile</li>
+            <li><strong>D1</strong>: Profilo, RdA, quadro orario e regolamentazione Enotecnico</li>
+            <li><strong>D2</strong>: Modello del diploma di specializzazione Enotecnico</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ ALLEGATO A-3 -->
+<section class="section" id="allegato">
+  <div class="container">
+
+    <div class="section-header">
+      <div class="art-num" style="background: var(--sage); font-size:.75rem; letter-spacing:.04em;">ALL.</div>
+      <div class="section-title-group">
+        <div class="art-label">Allegato A-3 — Settore Tecnologico-Ambientale</div>
+        <h2 class="section-title">Agraria, agroalimentare e agroindustria</h2>
+      </div>
+    </div>
+
+    <div class="allegato-hero">
+      <div class="sub">Profilo del diplomato · Allegato A-3</div>
+      <h2>Indirizzo Agraria,<br>agroalimentare e agroindustria</h2>
+      <p>Il diplomato è in grado di intervenire nei sistemi agro-produttivi rispondendo alle moderne esigenze del settore che includono <strong>sostenibilità, innovazione digitale e valorizzazione del Made in Italy</strong>. L'indirizzo si articola in tre specializzazioni triennali distinte.</p>
+    </div>
+
+    <!-- Profilo generale -->
+    <h3 style="font-family: var(--serif); font-size: 1.5rem; margin-bottom: 16px; color: var(--ink);">
+      Profilo generale del diplomato
+    </h3>
+    <p style="font-size:.87rem; color: var(--ink-soft); margin-bottom: 16px; max-width:680px; line-height:1.7;">
+      Attraverso il percorso comune dell'indirizzo, il diplomato è in grado di:
+    </p>
+    <div class="profile-grid">
+      <div class="profile-item">Collaborare alla progettazione di sistemi agro-produttivi che integrano sostenibilità ambientale e circolare, ricerca scientifica e biotecnologie</div>
+      <div class="profile-item">Controllare la qualità delle produzioni agroalimentari verificando parametri fisico-chimici, igienici e organolettici</div>
+      <div class="profile-item">Gestire processi tecnologici e biotecnologici per la trasformazione dei prodotti (qualità ed economicità)</div>
+      <div class="profile-item">Pianificare la gestione del corretto smaltimento e riutilizzo (upcycling) di reflui e residui — economia circolare</div>
+      <div class="profile-item">Pianificare le attività aziendali, promuovere e commercializzare prodotti e servizi del Made in Italy, garantire tracciabilità di filiera</div>
+      <div class="profile-item">Collaborare alla progettazione di interventi di protezione e bonifica di zone a rischio idrogeologico</div>
+      <div class="profile-item">Gestire e pianificare il territorio: operazioni catastali, carte tematiche</div>
+      <div class="profile-item">Controllare le attività produttive con metodi contabili ed economici, calcolare indici di efficienza per l'impresa agricola</div>
+      <div class="profile-item">Analizzare dati economici per valutazioni di convenienza su beni, diritti e servizi in ambito agrario, ambientale e immobiliare rurale</div>
+    </div>
+
+    <!-- Competenze comuni -->
+    <h3 style="font-family: var(--serif); font-size: 1.5rem; margin: 40px 0 14px; color: var(--ink);">
+      Competenze comuni a tutte le articolazioni
+    </h3>
+    <p style="font-size:.87rem; color: var(--ink-soft); margin-bottom: 18px; max-width:680px; line-height:1.7;">
+      Queste competenze trasversali caratterizzano l'intero indirizzo, indipendentemente dall'articolazione scelta:
+    </p>
+    <ol class="comp-list">
+      <li>Identificare e descrivere i contesti ambientali; riconoscere le implicazioni etiche, sociali, scientifiche e produttive dell'innovazione tecnologica in ambito agrario</li>
+      <li>Applicare i principi dell'organizzazione e della gestione per attività ecocompatibili, anche tramite tecnologie innovative; intervenire nei processi produttivi garantendone efficacia, efficienza e qualità; sviluppo, integrazione e manutenzione di applicazioni software su varie piattaforme</li>
+      <li>Gestire processi produttivi di trasformazione valorizzando la qualità dei prodotti, assicurando tracciabilità e sicurezza igienico-sanitaria</li>
+      <li>Individuare e applicare la normativa comunitaria, nazionale e regionale sui processi produttivi, sulla sicurezza sul lavoro, sulla salute del consumatore e sulla tutela dell'ambiente</li>
+      <li>Rilevare e analizzare i capitali aziendali e le loro variazioni, applicando principi finanziario/contabili e di economicità per la gestione e il controllo dei processi produttivi</li>
+      <li>Effettuare valutazioni economiche e ambientali tramite analisi costi-benefici e valutazioni di impatto, per orientare scelte aziendali e politiche di pianificazione territoriale</li>
+      <li>Intervenire nel rilievo topografico e nell'interpretazione di documenti cartografici, catastali e di analisi ambientale; contribuire al monitoraggio del paesaggio, dell'ambiente e del territorio</li>
+      <li>Realizzare attività promozionali per la valorizzazione dei prodotti agroalimentari collegati alle caratteristiche territoriali, promuovendo la qualità dell'ambiente rurale come asset economico</li>
+    </ol>
+
+    <!-- TABS articolazioni -->
+    <h3 style="font-family: var(--serif); font-size: 1.5rem; margin: 40px 0 8px; color: var(--ink);">
+      Competenze specifiche per articolazione
+    </h3>
+    <p style="font-size:.87rem; color: var(--ink-soft); margin-bottom: 20px; max-width:680px; line-height:1.7;">
+      Le articolazioni si sviluppano nel triennio conclusivo. Seleziona quella di interesse:
+    </p>
+
+    <div class="art-tabs">
+      <div class="art-tab-buttons">
+        <button class="art-tab-btn active" onclick="switchTab(event,'tab-mii')">h.1 · Made in Italy</button>
+        <button class="art-tab-btn"        onclick="switchTab(event,'tab-saa')">h.2 · Scienze agrarie e ambientali</button>
+        <button class="art-tab-btn"        onclick="switchTab(event,'tab-vit')">h.3 · Viticoltura ed enologia</button>
+      </div>
+
+      <!-- TAB h.1 Made in Italy -->
+      <div class="art-tab-panel active" id="tab-mii">
+        <h4>Produzioni e tecnologie agroalimentari per il Made in Italy</h4>
+        <p class="desc">Opera nella pianificazione e gestione sostenibile dei cicli produttivi vegetali e animali, con sistemi di agricoltura di precisione e strumenti di monitoraggio remoto. Ottimizza l'uso delle risorse, interviene nei processi di trasformazione con tecnologie d'avanguardia, garantisce la sicurezza igienico-sanitaria e la conformità normativa dell'intera filiera.</p>
+        <ol class="comp-list gold">
+          <li>Pianificare e gestire l'intero ciclo delle produzioni vegetali e animali con innovazione digitale e automazione: sistemi di agricoltura di precisione per ottimizzare le risorse e massimizzare la resa nel rispetto della sostenibilità ambientale</li>
+          <li>Intervenire e controllare i processi di trasformazione dei prodotti agricoli applicando tecnologie e biotecnologie avanzate per migliorare qualità, shelf-life ed economicità del prodotto finito</li>
+          <li>Assicurare e monitorare la qualità e la sicurezza igienico-sanitaria dei prodotti in tutte le fasi della filiera</li>
+          <li>Utilizzare sistemi digitali avanzati per garantire la tracciabilità completa dalla raccolta/allevamento fino al consumatore, garantendo la conformità normativa e la valorizzazione del prodotto</li>
+        </ol>
+      </div>
+
+      <!-- TAB h.2 Scienze agrarie -->
+      <div class="art-tab-panel" id="tab-saa">
+        <h4>Scienze agrarie ed ambientali</h4>
+        <p class="desc">Opera nella raccolta ed elaborazione digitale di dati per bilanci di sostenibilità, analisi costi-benefici e valutazioni di impatto. Fornisce il supporto tecnico-economico necessario per decisioni di investimento e pianificazione territoriale. Interviene nella progettazione di interventi di bioingegneria e nell'ingegneria naturalistica. Collabora alla difesa del suolo e alla mitigazione del rischio idrogeologico.</p>
+        <ol class="comp-list sky">
+          <li>Eseguire indagini ed analisi per la valutazione della qualità ambientale, monitorando i parametri di sostenibilità e rilevando indicatori di disagio ambientale, con strumentazione tecnica e tecnologie digitali per la raccolta e l'elaborazione dei dati</li>
+          <li>Collaborare alla progettazione di interventi di bioingegneria e di difesa del suolo, per prevenire e mitigare i rischi idrogeologici, il dissesto del territorio e del paesaggio, in linea con le normative vigenti e le pratiche di ingegneria naturalistica</li>
+          <li>Elaborare perizie, stime e consulenze tecniche relative al valore di beni, fondi rustici, diritti e servizi, con particolare riferimento alla Valutazione Ambientale, al bilancio di sostenibilità, all'analisi costi-benefici e alle relazioni agronomiche; fornire supporto tecnico-economico a enti e aziende per decisioni di investimento e uso del territorio</li>
+        </ol>
+      </div>
+
+      <!-- TAB h.3 Viticoltura -->
+      <div class="art-tab-panel" id="tab-vit">
+        <h4>Viticoltura ed enologia</h4>
+        <p class="desc">Articolazione specializzata nella produzione vitivinicola, dalla gestione del vigneto ai processi di vinificazione, nel rispetto delle normative nazionali e comunitarie. A completamento, è previsto il percorso annuale di specializzazione <strong>Enotecnico</strong> (Allegato D-1) referenziato al V livello EQF.</p>
+        <div class="callout" style="margin-top: 12px;">
+          <strong>Nota:</strong> le competenze specifiche di questa articolazione sono contenute nella sezione 2 dell'Allegato A-3 completo. Il decreto prevede per Viticoltura ed enologia anche il raccordo diretto con il percorso annuale di specializzazione di <strong>Enotecnico</strong>, unico nel sistema nazionale, referenziato al V° livello EQF.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ FOOTER -->
+<footer class="footer">
+  <strong>IIS Gregorio Mendel · Villa Cortese (MI)</strong><br>
+  Sintesi del Decreto MIM n. 29 del 19 febbraio 2026 — <em>Riforma degli Istituti Tecnici</em><br>
+  Documento preparato per il Collegio Docenti · Marzo 2026<br>
+  <span style="opacity:.5; font-size:.7rem; margin-top:8px; display:block;">Fonte: D.M. 19/02/2026 e Allegato A-3 — Settore Tecnologico-Ambientale, Indirizzo Agraria, agroalimentare e agroindustria</span>
+</footer>
+
+<script>
+  function switchTab(e, id) {
+    document.querySelectorAll('.art-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.art-tab-panel').forEach(p => p.classList.remove('active'));
+    e.target.classList.add('active');
+    document.getElementById(id).classList.add('active');
+  }
+</script>
+</body>
+</html>
